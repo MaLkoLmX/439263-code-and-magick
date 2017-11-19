@@ -1,8 +1,7 @@
 window.renderStatistics = function (ctx, names, times) {
   ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
   ctx.fillRect(110, 20, 420, 270);
-
-  ctx.fillStyle = 'white';
+  ctx.fillStyle = 'rgba(256, 256, 256, 1.0)';
   ctx.strokeRect(100, 10, 420, 270);
   ctx.fillRect(100, 10, 420, 270);
 
@@ -11,14 +10,14 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Ура вы победили!', 120, 40);
   ctx.fillText('Список результатов:', 120, 60);
 
-  var max = -1;
-  var maxIndex = -1;
+  var max = -1; //  Максимальное время игроков?
+  var maxIndex = -1; // Максимальное время "вы"?
 
-  for(var i = 0 ; i < times.length; i++) {
+  for(var i = 0 ; i < times.length; i++) { //times.length - это количество значений, насколько я понимаю
     var time = times[i];
     if (time > max) {
       max = time;
-      maxIndex = i;
+      maxIndex = i; // Почему maxIndex = 1 и почему оно больше нигде не используется?
     }
   }
   var histogramHeight = 150;
@@ -36,9 +35,7 @@ window.renderStatistics = function (ctx, names, times) {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     }
     else {
-      ctx.fillStyle = 'rgba(0, 0, 255,' + Math.random().toFixed(1) + ')';
+      ctx.fillStyle = 'rgba(0, 0, 255,' + Math.random().toFixed(1) + ')'; // Со случайным значением плохо уяснил
     }
-    console.log(times[i] * step * -1);
   }
 };
-
