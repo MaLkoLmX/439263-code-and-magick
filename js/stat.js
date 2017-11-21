@@ -5,17 +5,13 @@ window.renderStatistics = function (ctx, names, times) { // windows присва
   var initialX = 120; // координата по x
   var initialY = 250; // координата по y
   var lineWidth = 40; // ширина полоски
-  // var randomColor = '+ (Math.random() * (1 - 0.2) + 0.2) +'; // случайное значение от 1 до 0.2
   var field = function (x, y) { // Поле
     ctx.fillRect(x, y, 420, 270);
   };
   var letter = function (text, x, y) { // Текст
     ctx.fillText(text, x, y);
   };
-  /* var getColor = function (r, g, b, a) { // Цвет
-    ctx.fillStyle = 'rgba(r, g, b, a)';
-  }; */
-  var getMaxElement = function (times) { // Максимальное время
+  var getMaxElement = function () { // Максимальное время
     var max = -1; //  создаем переменную, для хранения максимального значения
     for (var i = 0; i < times.length; i++) { // Повторяющийся цикл, где если i меньше длины массива(4), к i прибавляется 1
       var time = times[i]; // Объявили новую переменную, где times[i] - одно из четерых значений времени игроков
@@ -42,10 +38,8 @@ window.renderStatistics = function (ctx, names, times) { // windows присва
 
   for (var j = 0; j < times.length; j++) { // Цикл для нахождения высоты полоски
     if (names[j] === 'Вы') { // условие. Если значение names[i] равно "вы", то...
-      // getColor(255, 0, 0, 1);
       ctx.fillStyle = 'rgba(255, 0, 0, 1)'; // цвет красный
     } else { // иначе...
-      // getColor(0, 0, 255, randomColor);
       ctx.fillStyle = 'rgba(0, 0, 255, ' + (Math.random() * (1 - 0.2) + 0.2) + ')'; // у синего меняется прозрачность случанйым образом
     }
     ctx.fillRect(initialX + indent * j, initialY, lineWidth, times[j] * step); // полоска со значениями (x, y, ширина, высота). Высота зависит от времени игрока и относительной высоты
