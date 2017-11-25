@@ -1,7 +1,7 @@
 'use strict';
 function getRandom(rand) { // функция получения случайного значения
   return Math.floor(Math.random() * rand.length);
-};
+}
 var userDialog = document.querySelector('.setup'); // Объявили  переменную окно настроек
 userDialog.classList.remove('hidden'); // Удалили класс .hidden у блока с настройками
 var similarListElement = document.querySelector('.setup-similar-list'); // шаблон
