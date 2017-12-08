@@ -1,17 +1,14 @@
 'use strict';
 (function () {
-  window.getRandom = function(rand) { // функция получения случайного значения
+  window.getRandom = function (rand) { // функция получения случайного значения
     return Math.floor(Math.random() * rand.length);
-  }
+  };
 })();
 
 (function () {
   window.randomColor = function (elem, things) {
-    function getRandom(rand) { // функция получения случайного значения
-      return Math.floor(Math.random() * rand.length);
-    }
-    elem.style.fill = things[window.getRandom(things)]
-  }
+    elem.style.fill = things[window.getRandom(things)];
+  };
 })();
 
 window.util = (function () {

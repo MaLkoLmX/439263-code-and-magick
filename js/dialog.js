@@ -4,9 +4,9 @@
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = setup.querySelector('.setup-close');
 
-  var onPopupEscPress = function(evt) {
+  function onPopupEscPress(evt) {
     window.util.isEscEvent(evt, closePopup);
-  };
+  }
 
   function openPopup() {
     setup.classList.remove('hidden'); // удаляем класс
