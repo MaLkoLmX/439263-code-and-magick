@@ -15,6 +15,6 @@
   });
 
   wizardFireball.addEventListener('click', function () {
-    wizardFireball.style.background = fireballColor[window.getRandom(window.fireballColor)];
+    wizardFireball.style.background = window.fireballColor[window.getRandom(window.fireballColor)];
   });
 })();

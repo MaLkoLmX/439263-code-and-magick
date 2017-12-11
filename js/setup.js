@@ -6,7 +6,7 @@
     var coat = wizardElement.querySelector('.wizard-coat');
     var eyes = wizardElement.querySelector('.wizard-eyes');
 
-    wizardElement.querySelector('.setup-similar-label').textContent = firstName[window.getRandom(window.firstName)] + surname[window.getRandom(window.surname)]; // копируем и добавляем значение к определенному классу
+    wizardElement.querySelector('.setup-similar-label').textContent = window.firstName[window.getRandom(window.firstName)] + window.surname[window.getRandom(window.surname)]; // копируем и добавляем значение к определенному классу
     window.randomColor(coat, window.coatColor);
     window.randomColor(eyes, window.eyesColor);
 
