@@ -26,4 +26,51 @@
 
   similarListElement.appendChild(fragment); // добавили в div-список с персонажами
   userDialog.querySelector('.setup-similar').classList.remove('hidden'); // удалили класс
+
+  var shopElement = document.querySelector('.setup-artifacts-shop');
+  var draggedItem = null;
+
+  shopElement.addEventListener('dragstart', function (evt) {
+    if (evt.target.tagName === 'IMG') {
+      draggedItem = evt.target;
+      evt.dataTransfer.setData('text/plain', evt.target.alt);
+    }
+  });
+
+  var artifactsElement = document.querySelector('.setup-artifacts');
+
+  artifactsElement.addEventListener('dragover', function (evt) {
+    evt.preventDefault();
+    return false;
+  });
+
+  var star = document.querySelector('.setup-artifacts-cell');
+
+  star.addEventListener('mousedown', function () {
+    artifactsElement.style.outline = '2px dashed red';
+  });
+
+  star.addEventListener('mouseup', function () {
+    artifactsElement.style.outline = '';
+  });
+
+  artifactsElement.addEventListener('drop', function (evt) {
+    if (evt.target.children.length === 0) {
+      evt.target.style.backgroundColor = '';
+      evt.target.appendChild(draggedItem.cloneNode(true));
+      evt.preventDefault();
+      artifactsElement.style.outline = '';
+    }
+  });
+
+  artifactsElement.addEventListener('dragenter', function (evt) {
+    evt.target.style.backgroundColor = 'yellow';
+    evt.preventDefault();
+  });
+
+  artifactsElement.addEventListener('dragleave', function (evt) {
+    evt.target.style.backgroundColor = '';
+    evt.preventDefault();
+  });
 })();
+
