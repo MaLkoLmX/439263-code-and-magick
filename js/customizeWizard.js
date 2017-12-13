@@ -7,14 +7,15 @@
   var wizardFireball = setup.querySelector('.setup-fireball-wrap');
 
   wizardCoat.addEventListener('click', function () {
-    wizardCoat.style.fill = window.randomColor(wizardCoat, window.coatColor);
+    window.colorizeElement(wizardCoat, window.coatColor, window.randomColor);
   });
 
   wizardEyes.addEventListener('click', function () {
-    wizardEyes.style.fill = window.randomColor(wizardEyes, window.eyesColor);
+    window.colorizeElement(wizardEyes, window.eyesColor, window.randomColor);
   });
 
   wizardFireball.addEventListener('click', function () {
-    wizardFireball.style.background = window.fireballColor[window.getRandom(window.fireballColor)];
+    window.colorizeElement(wizardFireball, window.fireballColor, window.randomBackground);
   });
 })();
+

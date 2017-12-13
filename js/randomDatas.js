@@ -10,3 +10,9 @@
     elem.style.fill = things[window.getRandom(things)];
   };
 })();
+
+(function () {
+  window.randomBackground = function (elem, things) {
+    elem.style.backgroundColor = things[window.getRandom(things)];
+  };
+})();
