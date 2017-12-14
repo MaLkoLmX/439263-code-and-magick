@@ -10,7 +10,7 @@
     xhr.responseType = 'json'; // преобразует ответ сервера в формат json(объект)
 
     xhr.addEventListener('load', function () { // load - обработчик, который сробатывает, когда сервер отвечает
-      xhr.status === 200 ? callback(xhr.response) : error(xhr.response);
+      return xhr.status === 200 ? callback(xhr.response) : error(xhr.response);
     });
 
     xhr.addEventListener('error', function () {
