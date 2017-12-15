@@ -13,20 +13,45 @@
     return wizardElement; // выводим скопированный элемент
   }
 
-  var wizards = 4;
   var fragment = document.createDocumentFragment();
   var userDialog = document.querySelector('.setup'); // Объявили  переменную окно настроек
   var similarListElement = document.querySelector('.setup-similar-list'); // шаблон
 
-  for (var i = 0; i < wizards; i++) {
-    fragment.appendChild(renderWizard(i));
+  function successHandler(wizards) {
+    for (var i = 0; i < 4; i++) {
+      fragment.appendChild(renderWizard(wizards[i]));
+    }
+    similarListElement.appendChild(fragment); // добавили в div-список с персонажами
+
+    userDialog.querySelector('.setup-similar').classList.remove('hidden'); // удалили класс
   }
 
+  function errorHandler(error) {
+    var node = document.createElement('div');
+    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
+    node.style.position = 'absolute';
+    node.style.left = 0;
+    node.style.right = 0;
+    node.style.fontSize = '30px';
+
+    node.textContent = error;
+    document.body.insertAdjacentElement('afterbegin', node);
+  }
+
+  window.backend.load(successHandler, errorHandler);
+
   userDialog.classList.remove('hidden'); // Удалили класс .hidden у блока с настройками
+  // ----------------------------------------
+  // отправка формы
+  var form = userDialog.querySelector('.setup-wizard-form'); // форма
 
-  similarListElement.appendChild(fragment); // добавили в div-список с персонажами
-  userDialog.querySelector('.setup-similar').classList.remove('hidden'); // удалили класс
-
+  form.addEventListener('submit', function (evt) { // событие при отправке формы
+    window.backend.save(new FormData(form), function () {
+      userDialog.classList.add('hidden');
+    }, errorHandler);
+    evt.preventDefault();
+  });
+  // ------------------------------------------
   var shopElement = document.querySelector('.setup-artifacts-shop');
   var draggedItem = null;
 

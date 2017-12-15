@@ -6,3 +6,7 @@
     }
   };
 })();
+
+window.randomColor = function (elem, things) {
+  elem.style.fill = things[window.getRandom(things)];
+};
